@@ -3,12 +3,16 @@ package com.example.myspringproject.entity;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Entity
 @Getter
 @Setter
 @ToString
+@Table (name = "account")
 public class Account extends AbstractEntity {
 
     @NonNull
@@ -22,6 +26,11 @@ public class Account extends AbstractEntity {
     private Long personNumber;
     private Boolean isActive;
     private String securityNumber;
-    @ManyToMany(mappedBy = "accountList")
-    Set<Role> roles;
+    @ManyToMany
+    @JoinTable(
+            name = "account_role",
+            joinColumns = @JoinColumn(name = "account_id") ,
+            inverseJoinColumns = @JoinColumn(name = "role_id")
+    )
+    private Set<Role> roles = new HashSet<>();
 }
