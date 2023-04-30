@@ -1,12 +1,10 @@
 package com.example.myspringproject.entity;
 
-import jakarta.persistence.*;
 import lombok.*;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import javax.persistence.*;
+import java.sql.Timestamp;
+import java.util.*;
 
 @Entity
 @Getter
@@ -14,7 +12,7 @@ import java.util.Set;
 @ToString
 @Table (name = "account")
 public class Account extends AbstractEntity {
-
+    public static Set<Long> personNumberMap = new HashSet<>();
     @NonNull
     @Column(unique = true)
     private String userName;
@@ -26,6 +24,7 @@ public class Account extends AbstractEntity {
     private Long personNumber;
     private Boolean isActive;
     private String securityNumber;
+    private Timestamp phoneNumber;
     @ManyToMany
     @JoinTable(
             name = "account_role",

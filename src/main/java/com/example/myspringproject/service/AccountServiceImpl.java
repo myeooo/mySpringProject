@@ -24,4 +24,7 @@ public class AccountServiceImpl implements IAccountService{
     public List<Account> findAll() {
         return accountRepo.findAll();
     }
+    public Account insert(Account account){
+        return accountRepo.save(account);
+    }
 }
