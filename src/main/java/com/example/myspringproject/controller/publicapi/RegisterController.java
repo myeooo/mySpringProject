@@ -17,9 +17,7 @@ public class RegisterController {
     }
     @PostMapping
     public Account register(@RequestBody Account account){
-
         return accountService.insert(account);
-
     }
 
 }
