@@ -1,6 +1,6 @@
 package com.example.myspringproject.config;
 
-import com.example.myspringproject.Authenticate.MyDatabaseUserDetailsService;
+//import com.example.myspringproject.Authenticate.MyDatabaseUserDetailsService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -27,10 +27,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .logout().permitAll();
     }
 
-    @Bean
-    public UserDetailsService userDetailsService() {
-        return new MyDatabaseUserDetailsService(); // (1)
-    }
+//    @Bean
+//    public UserDetailsService userDetailsService() {
+//        return new MyDatabaseUserDetailsService(); // (1)
+//    }
     @Bean
     PasswordEncoder passwordEncoder(){
         return new BCryptPasswordEncoder();
