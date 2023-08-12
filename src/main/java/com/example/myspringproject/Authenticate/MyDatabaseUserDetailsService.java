@@ -23,7 +23,7 @@ public class MyDatabaseUserDetailsService  implements UserDetailsService  {
         return new UserDetails() {
             @Override
             public Collection<? extends GrantedAuthority> getAuthorities() {
-                return null;
+                return acc.getRoles().stream().toList();
             }
 
             @Override
@@ -55,6 +55,6 @@ public class MyDatabaseUserDetailsService  implements UserDetailsService  {
             public boolean isEnabled() {
                 return false;
             }
-        } ;
+        };
     }
 }

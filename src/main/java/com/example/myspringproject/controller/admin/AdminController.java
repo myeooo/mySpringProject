@@ -4,8 +4,6 @@ import com.example.myspringproject.service.IAccountService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
-
-import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -30,14 +28,14 @@ public class AdminController {
 
     @PostMapping("users")
     public Long insertAccount(@RequestBody Account account){
-        return 1L;
+        return accountService.insert(account).getId();
     }
     @PutMapping("users")
     public Long modifyAccount(@RequestBody Account account){
-        return 1L;
+        return accountService.modify(account).getId();
     }
     @DeleteMapping("users")
-    public Long softDelete(@RequestBody Account account){
+    public Long softDelete(@PathVariable Long id){
         return 1L;
     }
     @DeleteMapping("users/remove/{id}")

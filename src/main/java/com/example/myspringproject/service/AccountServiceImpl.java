@@ -32,4 +32,34 @@ public class AccountServiceImpl implements IAccountService{
     public Account insert(Account account){
         return accountRepo.save(account);
     }
+
+    public Account modify(Account account){
+        Account ret = accountRepo.findById(account.getId()).get();
+        ret.setEmail(account.getEmail());
+        ret.setName(account.getName());
+        ret.setRoles(account.getRoles());
+        ret.setPassword(account.getPassword());
+        return accountRepo.save(ret);
+    }
+
+    @Override
+    public boolean  softDelete(Long id) {
+        Account ret = accountRepo.findById(id).get();
+        if(ret!= null){
+            ret.setIsActive(false);
+            accountRepo.save(ret);
+            return true;
+        }
+        return false;
+    }
+
+    @Override
+    public boolean delete(Long id) {
+        Account ret = accountRepo.findById(id).get();
+        if (ret != null) {
+            accountRepo.delete(ret);
+            return true;
+        }
+        return false;
+    }
 }

@@ -12,5 +12,8 @@ public interface IAccountService {
 
     List<Account> findAll();
     Account insert(Account account);
-    
+
+    Account modify(Account account);
+    boolean softDelete(Long id);
+    boolean delete(Long id);
 }

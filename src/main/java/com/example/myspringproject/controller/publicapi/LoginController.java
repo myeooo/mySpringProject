@@ -16,7 +16,7 @@ public class LoginController {
 
     }
     @PostMapping
-    public Account login(){
+    public Account login(@RequestParam String username, @RequestParam String password){
         return null;
     }
 }
