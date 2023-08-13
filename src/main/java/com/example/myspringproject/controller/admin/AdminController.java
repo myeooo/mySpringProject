@@ -35,11 +35,11 @@ public class AdminController {
         return accountService.modify(account).getId();
     }
     @DeleteMapping("users")
-    public Long softDelete(@PathVariable Long id){
-        return 1L;
+    public boolean softDelete(@PathVariable Long id){
+        return accountService.softDelete(id);
     }
     @DeleteMapping("users/remove/{id}")
     public boolean deleteAccount(@PathVariable(name = "id") Long id){
-        return true;
+        return accountService.delete(id);
     }
 }

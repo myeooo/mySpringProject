@@ -3,6 +3,7 @@ package com.example.myspringproject.service;
 import com.example.myspringproject.entity.Account;
 import com.example.myspringproject.repository.AccountRepo;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -11,7 +12,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class AccountServiceImpl implements IAccountService{
     private final AccountRepo accountRepo;
-
+    private final PasswordEncoder passwordEncoder;
     @Override
     public Account findById(Long id) {
         return accountRepo.findById(id).get();
@@ -29,7 +30,9 @@ public class AccountServiceImpl implements IAccountService{
     public List<Account> findAll() {
         return accountRepo.findAll();
     }
+
     public Account insert(Account account){
+        account.setPassword(passwordEncoder.encode(account.getPassword()));
         return accountRepo.save(account);
     }
 
@@ -38,7 +41,7 @@ public class AccountServiceImpl implements IAccountService{
         ret.setEmail(account.getEmail());
         ret.setName(account.getName());
         ret.setRoles(account.getRoles());
-        ret.setPassword(account.getPassword());
+        ret.setPassword(passwordEncoder.encode(account.getPassword()));
         return accountRepo.save(ret);
     }
 

@@ -15,7 +15,7 @@ public class Account extends AbstractEntity {
     public static Set<Long> personNumberMap = new HashSet<>();
     @NonNull
     @Column(unique = true)
-    private String userName;
+    private String username;
     @NonNull
     @Column(unique = true)
     private String email;
@@ -24,7 +24,7 @@ public class Account extends AbstractEntity {
     private Long personNumber;
     private Boolean isActive;
     private String securityNumber;
-    private Timestamp phoneNumber;
+    private Long phoneNumber;
     @ManyToMany
     @JoinTable(
             name = "account_role",

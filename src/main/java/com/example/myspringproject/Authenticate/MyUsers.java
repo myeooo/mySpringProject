@@ -4,12 +4,10 @@ import com.example.myspringproject.entity.Account;
 import com.example.myspringproject.entity.Role;
 import lombok.Data;
 import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
-import java.util.HashSet;
-import java.util.Set;
+
 @Data
 public class MyUsers implements UserDetails {
     private Account account;
@@ -30,7 +28,7 @@ public class MyUsers implements UserDetails {
 
     @Override
     public String getUsername() {
-        return account.getUserName();
+        return account.getUsername();
     }
 
     @Override

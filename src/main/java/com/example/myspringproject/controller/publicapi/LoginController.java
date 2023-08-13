@@ -9,12 +9,7 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("public-api-login")
 public class LoginController {
-    private final IAccountService accountService;
 
-    @GetMapping
-    public void loginPage(){
-
-    }
     @PostMapping
     public Account login(@RequestParam String username, @RequestParam String password){
         return null;

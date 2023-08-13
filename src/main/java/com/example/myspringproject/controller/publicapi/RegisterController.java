@@ -11,10 +11,6 @@ import org.springframework.web.bind.annotation.*;
 public class RegisterController {
     private final IAccountService accountService;
 
-    @GetMapping
-    public Long registerPage(){
-        return 1L;
-    }
     @PostMapping
     public Account register(@RequestBody Account account){
         return accountService.insert(account);

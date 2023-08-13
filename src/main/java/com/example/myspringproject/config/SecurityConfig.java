@@ -1,6 +1,7 @@
 package com.example.myspringproject.config;
 
 //import com.example.myspringproject.Authenticate.MyDatabaseUserDetailsService;
+import com.example.myspringproject.Authenticate.MyDatabaseUserDetailsService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -18,7 +19,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     public void configure(HttpSecurity http) throws Exception {
         http.csrf().disable()
                 .authorizeRequests()
-                .antMatchers("/api-admin/").hasRole("ADMIN")
+                .antMatchers("/public-*", "/").permitAll()
+                .antMatchers("/api-admin/").hasAnyRole("ADMIN")
                 .antMatchers("/api-user/").hasAnyRole("USER")
                 .anyRequest().authenticated()
                 .and()
@@ -27,10 +29,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .logout().permitAll();
     }
 
-//    @Bean
-//    public UserDetailsService userDetailsService() {
-//        return new MyDatabaseUserDetailsService(); // (1)
-//    }
+    @Bean
+    public UserDetailsService userDetailsService() {
+        return new MyDatabaseUserDetailsService();
+    }
     @Bean
     PasswordEncoder passwordEncoder(){
         return new BCryptPasswordEncoder();
