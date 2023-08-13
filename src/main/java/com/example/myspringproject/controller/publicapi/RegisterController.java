@@ -10,11 +10,6 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("public-api-register")
 public class RegisterController {
     private final IAccountService accountService;
-
-    @GetMapping
-    public Long registerPage(){
-        return 1L;
-    }
     @PostMapping
     public Account register(@RequestBody Account account){
         return accountService.insert(account);
