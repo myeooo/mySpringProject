@@ -3,6 +3,13 @@ package com.example.myspringproject.controller.publicapi;
 import com.example.myspringproject.entity.Account;
 import com.example.myspringproject.service.IAccountService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.AuthenticationException;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
 @RequiredArgsConstructor
@@ -10,8 +17,8 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("public-api-login")
 public class LoginController {
 
-    @PostMapping
-    public Account login(@RequestParam String username, @RequestParam String password){
-        return null;
-    }
+//    @PostMapping
+//    public ResponseEntity<String> login(@RequestParam String username, @RequestParam String password){
+//
+//    }
 }
